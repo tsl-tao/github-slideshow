@@ -1,0 +1,25 @@
+name: CI
+
+on: [push]
+
+jobs:
+ sast_scan:
+  name: Run Bandit Scan
+  runs-on: unbuntu-latest
+
+  steps:
+  - name: checkout code
+    uses: action/checkout@v2
+
+  - name: Set uo Python
+    uses: sctions/setu-python@v2
+    with: 
+      Python-version: 3.8
+
+    - name: Install Bandit
+      run: pip install bandit
+
+    - name: Tun Bandit Scan
+      run: bandit -r .
+ 
+  
